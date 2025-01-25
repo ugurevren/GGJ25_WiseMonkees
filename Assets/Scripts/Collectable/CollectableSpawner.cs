@@ -14,14 +14,14 @@ public class CollectableSpawner : MonoBehaviour
         var moneyFish = Instantiate(moneyWormPrefab, position, Quaternion.identity);
         moneyFish.transform.parent = transform;
         
-        if (Random.value < -position.y / 8000.0f)
+        /*if (Random.value < -position.y / 8000.0f)
         {
             moneyFish.GetComponent<BaseCollectable>().worth = 3;
         }
         else if (Random.value < -position.y / 25000.0f)
         {
             moneyFish.GetComponent<BaseCollectable>().worth = 5;
-        }
+        }*/
     }
 
     private void SpawnBooster(Vector2 position)
