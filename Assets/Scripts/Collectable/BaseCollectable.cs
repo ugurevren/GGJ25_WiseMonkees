@@ -8,18 +8,22 @@ public class BaseCollectable : MonoBehaviour
     }
     public Type type { get; set; }
     
-    public int worth = 1;
-   
 
     //Bunu player controller trigger enter da çağır
     public virtual void Pickup()
     {
-        //UI Ekle
-        Debug.Log(worth);
         OnPickup();
+    }
+    public virtual void Pickup(GameObject go)
+    {
+        OnPickup(go);
     }
 
     protected virtual void OnPickup()
+    {
+        
+    }
+    protected virtual void OnPickup(GameObject go)
     {
         
     }

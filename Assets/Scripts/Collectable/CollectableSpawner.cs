@@ -1,33 +1,35 @@
+using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CollectableSpawner : MonoBehaviour
 {
     public GameObject moneyWormPrefab;
     public GameObject boosterPrefab;
-
-    public float screenHeight = 150f;
-    public float screenWidth = 100f;
+    
+    public float screenWidth = 8f;
     public float moonHeight = 15000f;
-
-    public void SpawnMoneyWorm(Vector2 position)
+    
+    public void SpawnMoneyWorm(float bottomLimit, float topLimit, float amount)
     {
-        var moneyFish = Instantiate(moneyWormPrefab, position, Quaternion.identity);
-        moneyFish.transform.parent = transform;
-        
-        /*if (Random.value < -position.y / 8000.0f)
+        for (int i = 0; i < amount; i++)
         {
-            moneyFish.GetComponent<BaseCollectable>().worth = 3;
+            var position = new Vector2(Random.Range(-screenWidth, screenWidth), Random.Range(bottomLimit, topLimit));
+            var moneyFish = Instantiate(moneyWormPrefab, position, Quaternion.identity);
+            moneyFish.transform.parent = transform;
         }
-        else if (Random.value < -position.y / 25000.0f)
-        {
-            moneyFish.GetComponent<BaseCollectable>().worth = 5;
-        }*/
     }
 
-    private void SpawnBooster(Vector2 position)
+    public void SpawnBooster(float bottomLimit, float topLimit, float amount, float boosterLevel)
     {
-        var booster = Instantiate(boosterPrefab, position, Quaternion.identity);
-        booster.transform.parent = transform;
+        for (int i = 0; i < amount; i++)
+        {
+            var position = new Vector2(Random.Range(-screenWidth, screenWidth), Random.Range(bottomLimit, topLimit));
+            var booster = Instantiate(boosterPrefab, position, Quaternion.identity);
+            booster.transform.parent = transform;
+            booster.GetComponent<Boost>().boosterLevel = boosterLevel;
+        }
     }
+
     
 }

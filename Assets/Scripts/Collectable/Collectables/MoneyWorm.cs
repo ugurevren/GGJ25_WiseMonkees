@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MoneyWorm : BaseCollectable
@@ -14,6 +12,7 @@ public class MoneyWorm : BaseCollectable
     protected override void OnPickup()
     {
         state = States.PICKED_UP;
+        Destroy(gameObject);
     }
 
     public void SetSound(AudioClip sound)
@@ -26,11 +25,11 @@ public class MoneyWorm : BaseCollectable
         Sprite.sprite = texture;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         if (state == States.MAGNETIZED && magnetizedTo != null)
         {
-            transform.position = Vector3.MoveTowards(transform.position, magnetizedTo.position, 100f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, magnetizedTo.position, 20f * Time.deltaTime);
         }
     }
 
