@@ -1483,6 +1483,52 @@ Transform:
   - {fileID: 1291993763}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &537609681
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537609683}
+  - component: {fileID: 537609682}
+  m_Layer: 0
+  m_Name: Background
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537609682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537609681}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a462439a7a1cb4a75b7e8395149a19e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 473462592}
+  backgroundHeight: 0
+--- !u!4 &537609683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537609681}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 193.27727, y: 718.3773, z: -7.2230124}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &566855320
 GameObject:
   m_ObjectHideFlags: 0
@@ -4334,6 +4380,7 @@ GameObject:
   - component: {fileID: 1674499707}
   - component: {fileID: 1674499706}
   - component: {fileID: 1674499708}
+  - component: {fileID: 1674499709}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -4396,6 +4443,22 @@ MonoBehaviour:
   energy: 1
   energyCostPerUnit: 0.1
   ghostColor: {r: 1, g: 1, b: 1, a: 0.5}
+--- !u!114 &1674499709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674499705}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a705ee36585c54774b9ea32c3261200d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireflyPrefab: {fileID: 0}
+  maxFireflies: 20
+  movementSpeed: 1
+  movementRange: {x: 0.5, y: 1.5}
 --- !u!1 &1678293091
 GameObject:
   m_ObjectHideFlags: 0
@@ -4793,6 +4856,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 473462593}
+  - {fileID: 537609683}
   - {fileID: 511343312}
   - {fileID: 872404370}
   - {fileID: 1080651645}
