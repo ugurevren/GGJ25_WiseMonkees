@@ -56,13 +56,13 @@ public class CameraFollow : MonoBehaviour
 
     void FollowPlayer()
     {
-        transform.position = new Vector3(player.position.x, player.position.y, transform.position.z);
+        transform.position = new Vector3(0, player.position.y, transform.position.z);
     }
 
     bool IsPlayerOutOfScreen()
     {
         Vector3 playerScreenPosition = Camera.main.WorldToViewportPoint(player.position);
-        return playerScreenPosition.x < 0 || playerScreenPosition.x > 1 || playerScreenPosition.y < 0 || playerScreenPosition.y > 1;
+        return playerScreenPosition.y < 0 || playerScreenPosition.y > 1;
     }
 
     void MoveToTargetLocation()

@@ -23,6 +23,11 @@ public class ShopController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI magnetLevelText;
     private float magnetLevel = 1f;
 
+    [SerializeField] private float bubbleBouncePrice = 100f;
+    [SerializeField] private TextMeshProUGUI bubbleBouncePriceText;
+    [SerializeField] private TextMeshProUGUI bubbleBounceLevelText;
+    private float bubbleBounceLevel = 1f;
+
     public void BuyBlackPapper()
     {
         if (gameController.wormCount >= blackPapperPrice)
@@ -67,6 +72,21 @@ public class ShopController : MonoBehaviour
         }
     }
 
+    public void BuyBubbleBounce()
+    {
+        if (gameController.wormCount >= bubbleBouncePrice)
+        {
+            gameController.wormCount -= bubbleBouncePrice;
+            gameController.UpdatePlayerLineThrowForce(gameController.bubbleBounceLevel + 1);
+            gameController.UpdateWormText();
+            bubbleBouncePrice += 50f;
+            bubbleBounceLevel += 1;
+            bubbleBounceLevelText.text = "Level: " + bubbleBounceLevel;
+            UpdateBubbleBouncePrice();
+            
+        }
+    }
+
     public void UpdateBlackPapperPrice()
     {
         blackPapperPriceText.text = "Price: " + blackPapperPrice;
@@ -106,15 +126,30 @@ public class ShopController : MonoBehaviour
         }
     }
 
+    public void UpdateBubbleBouncePrice()
+    {
+        bubbleBouncePriceText.text = "Price: " + bubbleBouncePrice;
+        if(gameController.wormCount < bubbleBouncePrice)
+        {
+            bubbleBouncePriceText.color = Color.red;
+        }
+        else
+        {
+            bubbleBouncePriceText.color = Color.white;
+        }
+    }
+
     private void OnEnable()
     {
         UpdateBlackPapperPrice();
         UpdateBoosterPrice();
         UpdateMagnetPrice();
+        UpdateBubbleBouncePrice();
 
         blackPapperLevelText.text = "Level: " + blackPapperLevel;
         boosterLevelText.text = "Level: " + boosterLevel;
         magnetLevelText.text = "Level: " + magnetLevel;
+        bubbleBounceLevelText.text = "Level: " + bubbleBounceLevel;
     }
     
 }

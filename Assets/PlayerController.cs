@@ -7,6 +7,8 @@ public partial class PlayerController : MonoBehaviour
     public float lineThrowForce = 5f;
     private Rigidbody2D rb;
 
+    [SerializeField] private Sprite afterSprite;
+
     [SerializeField] private GameController gameController;
     
 
@@ -24,6 +26,7 @@ public partial class PlayerController : MonoBehaviour
             var normal = other.contacts[0].normal;
             rb.velocity = Vector2.zero;
             rb.AddForce(normal * lineThrowForce, ForceMode2D.Impulse);
+            Destroy(other.gameObject);
         }
     }
     
@@ -50,6 +53,7 @@ public partial class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             ApplyJump();
+            GetComponent<SpriteRenderer>().sprite = afterSprite;
         }
     }
 

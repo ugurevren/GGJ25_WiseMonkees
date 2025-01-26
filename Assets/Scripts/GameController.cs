@@ -20,26 +20,39 @@ public class GameController : MonoBehaviour
     public float boosterLevel = 1f;
     public float magnetLevel = 1f;
 
+    public float bubbleBounceLevel = 1f;
+
     public float wormCount = 0;
+
 
     public void UpdateMagnetLevel(float level)
     {
         magnetLevel = level;
-        magnetController.UpdateMagnetLevel(level);
+        magnetController.UpdateMagnetLevel(level); // Done in MagnetController.cs
     }
     public void UpdateBoosterLevel(float level)
     {
-        boosterLevel = level;
+        boosterLevel = level; // Done in Boost.cs
     }
 
     public void UpdatePlayerJumpForce(float force)
     {
-        playerController.throwForce = force;
+        playerController.throwForce = 15f+ (force*5f);
+    }
+
+    public void UpdatePlayerLineThrowForce(float force)
+    {
+        playerController.lineThrowForce = 15f+(force*5f);
     }
 
 
     private void Start(){
         UpdateWormText();
+        UpdateBoosterLevel(boosterLevel);
+        UpdateMagnetLevel(magnetLevel);
+        UpdatePlayerJumpForce(1);
+        UpdatePlayerLineThrowForce(1);
+        
         collectableSpawner.SpawnMoneyWorm(0, moonLevel, wormDensity);
         collectableSpawner.SpawnBooster(0, moonLevel, boosterDensity,boosterLevel);
     
